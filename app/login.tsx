@@ -1,7 +1,15 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
+import { Button } from "@/components/Button";
+import {Input} from "@/components/Input";
 import { useState } from "react";
-import { Image, StyleSheet, Text, View, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 
 export default function Login() {
   const [cpf, setCpf] = useState("");
@@ -71,6 +79,6 @@ const styles = StyleSheet.create({
   container_input: {
     gap: 15,
     width: "100%",
-    maxWidth: 400
-  }
+    maxWidth: 400,
+  },
 });

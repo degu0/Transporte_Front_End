@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TextInputProps,
+  View,
+} from "react-native";
 
 interface InputProps extends TextInputProps {
   label: string;
@@ -7,7 +13,7 @@ interface InputProps extends TextInputProps {
   onValueChange?: (value: string) => void;
 }
 
-const Input = ({
+export const Input = ({
   label,
   initialValue = "",
   onValueChange,
@@ -52,5 +58,3 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
-
-export default Input;

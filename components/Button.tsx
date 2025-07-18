@@ -11,7 +11,7 @@ interface ButtonProps {
   onPress: (event: GestureResponderEvent) => void;
 }
 
-const Button = ({
+export const Button = ({
   text,
   onPress
 }: ButtonProps) => {
@@ -42,5 +42,3 @@ const styles = StyleSheet.create({
     fontWeight: "semibold",
   }
 });
-
-export default Button;
