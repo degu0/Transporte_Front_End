@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button";
-import {Input} from "@/components/Input";
+import { Input } from "@/components/Input";
 import { useState } from "react";
 import {
   Image,
@@ -46,6 +46,8 @@ export default function Login() {
             secureTextEntry
           />
 
+          <Text style={styles.link}>Esqueceu a senha?</Text>
+
           <Button text="Entrar" onPress={() => console.log("ola")} />
         </View>
       </ScrollView>
@@ -80,5 +82,8 @@ const styles = StyleSheet.create({
     gap: 15,
     width: "100%",
     maxWidth: 400,
+  },
+  link: {
+    color: "#2E7D32",
   },
 });
