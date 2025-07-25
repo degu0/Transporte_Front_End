@@ -5,7 +5,7 @@ import { router } from "expo-router";
 export const Menu = () => {
   const navigate = (destino: string) => {
     if (destino === "Home") {
-      router.push("/");
+      router.push("/home");
     } else if (destino === "Alerta") {
       router.push("/alert");
     } else {

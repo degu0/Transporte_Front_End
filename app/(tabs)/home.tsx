@@ -1,11 +1,13 @@
 import { Menu } from "@/components/Menu";
 import { Button } from "@/components/Button";
-import QrCode from "../assets/images/qrCode.png";
-import { router } from "expo-router";
+import QrCode from "../../assets/images/qrCode.png";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
- 
+import { useAuth } from "@/contexts/AuthContext";
+
 export default function Home() {
+  const { user, logout } = useAuth();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.containerAlert}>
@@ -21,7 +23,7 @@ export default function Home() {
             onPress={() => console.log("ler qrcode")}
           />
           <View style={{ height: 12 }} />
-          <Button text="Ir para Login" onPress={() => router.push("/login")} />
+          <Button text="Sair" onPress={logout} />
         </View>
       </View>
 
