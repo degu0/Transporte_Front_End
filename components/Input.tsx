@@ -10,21 +10,41 @@ import {
 interface InputProps extends TextInputProps {
   label: string;
   initialValue?: string;
+  mask?: string;
   onValueChange?: (value: string) => void;
+}
+
+function cpfApplyMask(value: string) {
+  return value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
 }
 
 export const Input = ({
   label,
   initialValue = "",
+  mask,
   onValueChange,
   ...props
 }: InputProps) => {
   const [value, setValue] = useState(initialValue);
 
   const handleChange = (text: string) => {
-    setValue(text);
+    let newValue = text;
+
+    if (mask === "cpf") {
+      const onlyNumbers = text.replace(/\D/g, "").slice(0, 11);
+
+      if (onlyNumbers.length <= 11) {
+        newValue = onlyNumbers;
+      }
+
+      if (onlyNumbers.length === 11) {
+        newValue = cpfApplyMask(onlyNumbers);
+      }
+    }
+
+    setValue(newValue);
     if (onValueChange) {
-      onValueChange(text);
+      onValueChange(newValue);
     }
   };
 

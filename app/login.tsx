@@ -36,6 +36,7 @@ export default function Login() {
             label="CPF"
             onValueChange={setCpf}
             placeholder="CPF"
+            mask="cpf"
             value={cpf}
           />
           <Input
