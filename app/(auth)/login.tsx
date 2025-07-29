@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTheme } from "react-native-paper";
 import React, { useState } from "react";
 import {
   Image,
@@ -14,6 +15,7 @@ import {
 
 export default function Login() {
   const { login } = useAuth();
+  const { colors } = useTheme();
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
   const [erro, setErro] = useState("");
@@ -38,7 +40,7 @@ export default function Login() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
+      style={[styles.container, { backgroundColor: colors.background }]}
     >
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
@@ -49,8 +51,11 @@ export default function Login() {
             style={styles.logo}
             source={require("../../assets/images/icon-green.png")}
           />
-          <Text style={styles.title}>Bem Vindo ao Transporte</Text>
+          <Text style={[styles.title, { color: colors.onSurface }]}>
+            Bem Vindo ao Transporte
+          </Text>
         </View>
+
         <View style={styles.container_input}>
           <Input
             label="CPF"
@@ -67,7 +72,9 @@ export default function Login() {
             secureTextEntry
           />
 
-          <Text style={styles.link}>Esqueceu a senha?</Text>
+          <Text style={[styles.link, { color: colors.secondary }]}>
+            Esqueceu a senha?
+          </Text>
 
           <Button text="Entrar" onPress={handleLogin} />
         </View>
@@ -79,12 +86,15 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
   },
   scrollContainer: {
     flexGrow: 1,
     marginTop: 50,
     padding: 20,
+  },
+  toggleButton: {
+    alignSelf: "flex-end",
+    marginBottom: 10,
   },
   container_logo: {
     alignItems: "center",
@@ -105,6 +115,6 @@ const styles = StyleSheet.create({
     maxWidth: 400,
   },
   link: {
-    color: "#2E7D32",
+    textAlign: "right",
   },
 });

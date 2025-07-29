@@ -1,13 +1,20 @@
-import { Menu } from "@/components/Menu";
+import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useTheme } from "react-native-paper";
+import { HeaderMenu } from "@/components/HeaderMenu";
+import { Menu } from "@/components/Menu";
 
 export default function Profile() {
+  const { colors } = useTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <HeaderMenu />
+
       <View style={styles.header}>
-        <Ionicons name="person-circle-outline" size={80} color="#2E7D32" />
-        <Text style={styles.title}>Perfil do Usuário</Text>
+        <Ionicons name="person-circle-outline" size={80} color={colors.primary} />
+        <Text style={[styles.title, { color: colors.primary }]}>Perfil do Usuário</Text>
       </View>
 
       <View style={styles.infoWrapper}>
@@ -21,26 +28,29 @@ export default function Profile() {
   );
 }
 
-const Information = ({
+function Information({
   category,
   information,
 }: {
   category: string;
   information: string;
-}) => (
-  <View style={styles.informationContainer}>
-    <Ionicons name="information-circle-outline" size={24} color="#388E3C" />
-    <View style={styles.information}>
-      <Text style={styles.category}>{category}</Text>
-      <Text style={styles.text}>{information}</Text>
+}) {
+  const { colors } = useTheme();
+
+  return (
+    <View style={[styles.informationContainer, { backgroundColor: colors.elevation.level1 }]}>
+      <Ionicons name="information-circle-outline" size={24} color={colors.primary} />
+      <View style={styles.information}>
+        <Text style={[styles.category, { color: colors.primary }]}>{category}</Text>
+        <Text style={[styles.text, { color: colors.onSurface }]}>{information}</Text>
+      </View>
     </View>
-  </View>
-);
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     paddingTop: 40,
     justifyContent: "space-between",
   },
@@ -52,7 +62,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 20,
     fontWeight: "bold",
-    color: "#2E7D32",
   },
   infoWrapper: {
     gap: 20,
@@ -69,11 +78,9 @@ const styles = StyleSheet.create({
   },
   category: {
     fontWeight: "600",
-    color: "#2E7D32",
     fontSize: 14,
   },
   text: {
-    color: "#333",
     fontSize: 16,
   },
 });

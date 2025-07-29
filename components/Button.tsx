@@ -5,25 +5,23 @@ import {
   GestureResponderEvent,
   StyleSheet,
 } from "react-native";
+import { useTheme } from "react-native-paper";
 
 interface ButtonProps {
   text: string;
   onPress: (event: GestureResponderEvent) => void;
 }
 
-export const Button = ({
-  text,
-  onPress
-}: ButtonProps) => {
-
+export const Button = ({ text, onPress }: ButtonProps) => {
+  const { colors } = useTheme();
 
   return (
     <TouchableOpacity
-      style={styles.button}
+      style={[styles.button, { backgroundColor: colors.secondary }]}
       onPress={onPress}
       activeOpacity={0.7}
     >
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, { color: colors.background }]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -40,5 +38,5 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 16,
     fontWeight: "semibold",
-  }
+  },
 });

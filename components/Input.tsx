@@ -6,6 +6,8 @@ import {
   TextInputProps,
   View,
 } from "react-native";
+import { useTheme } from "react-native-paper";
+
 
 interface InputProps extends TextInputProps {
   label: string;
@@ -26,6 +28,7 @@ export const Input = ({
   ...props
 }: InputProps) => {
   const [value, setValue] = useState(initialValue);
+  const { colors } = useTheme();
 
   const handleChange = (text: string) => {
     let newValue = text;
@@ -51,13 +54,24 @@ export const Input = ({
   return (
     <View>
       {label && (
-        <Text style={{ fontWeight: "bold", fontSize: 16, color: "#333" }}>
+        <Text
+          style={[
+            styles.label,
+            { color: colors.primary } 
+          ]}
+        >
           {label}
         </Text>
       )}
       <TextInput
-        style={styles.input}
-        placeholderTextColor="#1e1e1e"
+        style={[
+          styles.input,
+          {
+            borderColor: colors.secondary,
+            color: colors.onSurface,
+          },
+        ]}
+        placeholderTextColor={colors.onSurface + "99"}
         value={value}
         onChangeText={handleChange}
         {...props}
@@ -67,13 +81,17 @@ export const Input = ({
 };
 
 const styles = StyleSheet.create({
+  label: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: 6,
+  },
   input: {
     borderWidth: 1,
     borderRadius: 100,
     paddingHorizontal: 20,
     paddingVertical: 12,
     fontSize: 14,
-    color: "#333",
     marginBottom: 16,
     width: "100%",
   },

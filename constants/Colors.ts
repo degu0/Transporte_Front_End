@@ -1,26 +1,36 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import {
+  MD3DarkTheme as PaperDarkTheme,
+  MD3LightTheme as PaperLightTheme,
+} from "react-native-paper";
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+const CustomLightTheme = {
+  ...PaperLightTheme,
+  colors: {
+    ...PaperLightTheme.colors,
+    primary: "#1D4F29",
+    secondary: "#2E7D32",
+    tertiary: "#A5D6A7",
+    background: "#F5F5F5",
+    surface: "#ffffff",
+    onPrimary: "#ffffff",
+    onSecondary: "#ffffff",
+    text: "#333333",
+    error: "#C62828",
   },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+};
+
+const CustomDarkTheme = {
+  ...PaperDarkTheme,
+  colors: {
+    ...PaperDarkTheme.colors,
+    primary: "#A5D6A7",          // Versão clara do verde para destacar no escuro
+    secondary: "#2E7D32",
+    tertiary: "#1D4F29",         // Invertendo para dar contraste
+    background: "#121212",
+    surface: "#1e1e1e",
+    onPrimary: "#000000",
+    onSecondary: "#ffffff",
+    text: "#ffffff",
+    error: "#EF5350",            // Alerta um pouco mais visível no modo escuro
   },
 };

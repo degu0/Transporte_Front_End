@@ -3,27 +3,27 @@ import { Button } from "@/components/Button";
 import QrCode from "../../assets/images/qrCode.png";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
-import { useAuth } from "@/contexts/AuthContext";
+import { useTheme } from "react-native-paper";
 
 export default function Home() {
-  const { user, logout } = useAuth();
+  const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.containerAlert}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <TouchableOpacity
+        style={[styles.containerAlert, { backgroundColor: colors.secondary }]}
+      >
         <Feather name="alert-triangle" size={35} color="#fff" />
       </TouchableOpacity>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Bem-vindo à Home student!</Text>
+        <Text style={[styles.title, { color: colors.onSurface }]}>
+          Bem-vindo à Home student!
+        </Text>
         <Image style={styles.image} source={QrCode} />
         <View style={styles.buttons}>
-          <Button
-            text="Ler QR Code"
-            onPress={() => console.log("ler qrcode")}
-          />
+          <Button text="Ler QR Code" onPress={() => console.log("ler qrcode")} />
           <View style={{ height: 12 }} />
-          <Button text="Sair" onPress={logout} />
         </View>
       </View>
 
@@ -35,7 +35,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     justifyContent: "space-between",
   },
   content: {
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 20,
-    backgroundColor: "#2E7D32",
     padding: 15,
     borderRadius: 50,
     zIndex: 10,
@@ -61,7 +59,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 24,
-    color: "#333",
     textAlign: "center",
   },
   image: {

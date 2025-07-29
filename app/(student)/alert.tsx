@@ -2,19 +2,24 @@ import { Menu } from "@/components/Menu";
 import { Text, View, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
+import { useTheme } from "react-native-paper";
 
 export default function Alert() {
+  const { colors } = useTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
-        <Feather name="alert-triangle" size={40} color="#2E7D32" />
-        <Text style={styles.headerText}>Alertas recentes</Text>
+        <Feather name="alert-triangle" size={40} color={colors.secondary} />
+        <Text style={[styles.headerText, { color: colors.primary }]}>
+          Alertas recentes
+        </Text>
       </View>
 
       <View style={styles.messages}>
-        <Message person="Deyvid" comment="Horrível" />
-        <Message person="Davi" comment="Péssimo" />
-        <Message person="Maria" comment="Falta organização" />
+        <Message person="Deyvid" comment="Horrível" theme={colors} />
+        <Message person="Davi" comment="Péssimo" theme={colors} />
+        <Message person="Maria" comment="Falta organização" theme={colors} />
       </View>
 
       <Menu />
@@ -22,14 +27,29 @@ export default function Alert() {
   );
 }
 
-const Message = ({ person, comment }: { person: string; comment: string }) => (
-  <View style={styles.messageContainer}>
-    <View style={styles.avatar}>
+const Message = ({
+  person,
+  comment,
+  theme,
+}: {
+  person: string;
+  comment: string;
+  theme: any;
+}) => (
+  <View
+    style={[
+      styles.messageContainer,
+      { backgroundColor: theme.tertiary, shadowColor: "#000" },
+    ]}
+  >
+    <View style={[styles.avatar, { backgroundColor: theme.secondary }]}>
       <Ionicons name="person" size={24} color="#fff" />
     </View>
     <View style={styles.commentBox}>
-      <Text style={styles.personName}>{person}</Text>
-      <Text style={styles.commentText}>{comment}</Text>
+      <Text style={[styles.personName, { color: theme.primary }]}>
+        {person}
+      </Text>
+      <Text style={[styles.commentText, { color: theme.text }]}>{comment}</Text>
     </View>
   </View>
 );
@@ -37,7 +57,6 @@ const Message = ({ person, comment }: { person: string; comment: string }) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     paddingTop: 40,
     justifyContent: "space-between",
   },
@@ -48,21 +67,18 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#2E7D32",
     marginTop: 8,
   },
   messages: {
     flex: 1,
     gap: 16,
-    paddingHorizontal: 30
+    paddingHorizontal: 30,
   },
   messageContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#E8F5E9",
     borderRadius: 10,
     padding: 12,
-    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
@@ -71,7 +87,6 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#2E7D32",
     justifyContent: "center",
     alignItems: "center",
     marginRight: 12,
