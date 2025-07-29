@@ -1,4 +1,4 @@
-import { Stack , Redirect } from "expo-router";
+import { Stack, Redirect } from "expo-router";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function PublicLayout() {
@@ -6,7 +6,13 @@ export default function PublicLayout() {
 
   if (loading) return null;
 
-  if (user) return <Redirect href="/(tabs)/home" />;
+  if (user) {
+    if (user.type === "student") {
+      return <Redirect href="/(student)/home" />;
+    } else {
+      return <Redirect href="/(driver)/home" />;
+    }
+  }
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }

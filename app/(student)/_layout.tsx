@@ -13,7 +13,7 @@ export default function ProtectedLayout() {
     );
   }
 
-  if (!user) {
+  if (!user || user.type !== "student") {
     return <Redirect href="/login" />;
   }
 

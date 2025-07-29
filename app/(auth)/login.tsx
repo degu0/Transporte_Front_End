@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { useAuth } from "@/contexts/AuthContext";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -16,6 +16,24 @@ export default function Login() {
   const { login } = useAuth();
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
+  const [erro, setErro] = useState("");
+
+  const handleLogin = async () => {
+    setErro("");
+
+    try {
+      if (cpf === "12" && password === "123") {
+        const type = "student";
+        await login({ cpf, type });
+      } else {
+        const type = "driver";
+        await login({ cpf, type });
+      }
+    } catch (error) {
+      console.log("Erro no login:", error);
+      setErro("Erro ao tentar fazer login.");
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -51,7 +69,7 @@ export default function Login() {
 
           <Text style={styles.link}>Esqueceu a senha?</Text>
 
-          <Button text="Entrar" onPress={() => login({ cpf })} />
+          <Button text="Entrar" onPress={handleLogin} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

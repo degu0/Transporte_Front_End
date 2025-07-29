@@ -15,7 +15,7 @@ export default function Home() {
       </TouchableOpacity>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Bem-vindo à Home!</Text>
+        <Text style={styles.title}>Bem-vindo à Home DRIVER!</Text>
         <Image style={styles.image} source={QrCode} />
         <View style={styles.buttons}>
           <Button

@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 
 type User = {
   cpf: string;
+  type: "student" | "driver"; 
 };
 
 type AuthContextType = {
@@ -30,7 +31,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (userData: User) => {
     await AsyncStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
-    router.replace("/(tabs)/home");
+
+    if(userData.type === "student") {
+      router.replace("/(student)/home");
+    }else {
+      router.replace("/(driver)/home");
+    }
   };
 
   const logout = async () => {

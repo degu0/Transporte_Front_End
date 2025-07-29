@@ -8,6 +8,8 @@ export const Menu = () => {
       router.push("/home");
     } else if (destino === "Alerta") {
       router.push("/alert");
+    } else if (destino === "Chat") {
+      router.push("/chat");
     } else {
       router.push("/profile");
     }
@@ -17,6 +19,7 @@ export const Menu = () => {
     <View style={styles.navBar}>
       <NavItem icon="home" label="Home" onPress={() => navigate("Home")} />
       <NavItem icon="alert-circle" label="Alerta" onPress={() => navigate("Alerta")} />
+      <NavItem icon="chatbubble-outline" label="Chat" onPress={() => navigate("Chat")} />
       <NavItem icon="person-sharp" label="Perfil" onPress={() => navigate("Perfil")} />
     </View>
   );
