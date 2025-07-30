@@ -23,14 +23,14 @@ const CustomDarkTheme = {
   ...PaperDarkTheme,
   colors: {
     ...PaperDarkTheme.colors,
-    primary: "#A5D6A7",          // Versão clara do verde para destacar no escuro
+    primary: "#A5D6A7",        
     secondary: "#2E7D32",
-    tertiary: "#1D4F29",         // Invertendo para dar contraste
-    background: "#121212",
+    tertiary: "#1D4F29",         
+    background: "#3f3a41",
     surface: "#1e1e1e",
     onPrimary: "#000000",
     onSecondary: "#ffffff",
     text: "#ffffff",
-    error: "#EF5350",            // Alerta um pouco mais visível no modo escuro
+    error: "#EF5350",            
   },
 };

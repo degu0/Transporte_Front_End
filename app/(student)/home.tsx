@@ -4,6 +4,7 @@ import QrCode from "../../assets/images/qrCode.png";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import { useTheme } from "react-native-paper";
+import { navigate } from "expo-router/build/global-state/routing";
 
 export default function Home() {
   const { colors } = useTheme();
@@ -22,7 +23,7 @@ export default function Home() {
         </Text>
         <Image style={styles.image} source={QrCode} />
         <View style={styles.buttons}>
-          <Button text="Ler QR Code" onPress={() => console.log("ler qrcode")} />
+          <Button text="Ler QR Code" onPress={() => navigate('/vacancy')} />
           <View style={{ height: 12 }} />
         </View>
       </View>
