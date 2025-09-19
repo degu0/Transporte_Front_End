@@ -1,17 +1,17 @@
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { useAuth } from "@/contexts/AuthContext";
-import { useTheme } from "react-native-paper";
 import React, { useState } from "react";
 import {
   Image,
-  StyleSheet,
-  Text,
-  View,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
+import { useTheme } from "react-native-paper";
 
 export default function Login() {
   const { login } = useAuth();
@@ -49,11 +49,18 @@ export default function Login() {
         <View style={styles.container_logo}>
           <Image
             style={styles.logo}
-            source={require("../../assets/images/icon-green.png")}
+            source={require("../../assets/images/icon-light.png")}
           />
-          <Text style={[styles.title, { color: colors.onSurface }]}>
-            Bem Vindo ao Transporte
+          <Text style={[styles.title,{ color: "#3EA382" }]}>
+            CONECTA
           </Text>
+          <Text style={[styles.title, { color: "#0B573E" }]}>
+            TRANSPORTE
+          </Text>
+        </View>
+
+        <View>
+          <Text style={styles.subtitle}>Faça Login</Text>
         </View>
 
         <View style={styles.container_input}>
@@ -72,8 +79,8 @@ export default function Login() {
             secureTextEntry
           />
 
-          <Text style={[styles.link, { color: colors.secondary }]}>
-            Esqueceu a senha?
+          <Text style={[styles.link, { color: colors.primary }]}>
+            Esqueceu a senha? clique aqui
           </Text>
 
           <Button text="Entrar" onPress={handleLogin} />
@@ -90,7 +97,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     marginTop: 50,
-    padding: 20,
+    padding: 30,
   },
   toggleButton: {
     alignSelf: "flex-end",
@@ -98,16 +105,22 @@ const styles = StyleSheet.create({
   },
   container_logo: {
     alignItems: "center",
-    marginBottom: 60,
+    marginBottom: 30,
   },
   logo: {
-    width: 200,
-    height: 175,
+    width: 166,
+    height: 107,
+    marginBottom: 15,
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 22,
     fontWeight: "500",
-    marginTop: 10,
+    textAlign: "center", 
+    marginBottom: 30,
   },
   container_input: {
     gap: 15,

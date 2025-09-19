@@ -49,7 +49,7 @@ const CustomDarkTheme = {
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const deviceScheme = useColorScheme();
-  const [isDark, setIsDark] = useState(deviceScheme === "dark");
+  const [isDark, setIsDark] = useState(deviceScheme === "light");
 
   const toggleTheme = () => setIsDark((prev) => !prev);
 

@@ -57,7 +57,7 @@ export const Input = ({
         <Text
           style={[
             styles.label,
-            { color: colors.primary } 
+            { color: colors.onSurface } 
           ]}
         >
           {label}
@@ -67,7 +67,7 @@ export const Input = ({
         style={[
           styles.input,
           {
-            borderColor: colors.secondary,
+            borderColor: colors.primary,
             color: colors.onSurface,
           },
         ]}
@@ -83,8 +83,8 @@ export const Input = ({
 const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
-    fontSize: 16,
-    marginBottom: 6,
+    fontSize: 15,
+    marginBottom: 4,
   },
   input: {
     borderWidth: 1,

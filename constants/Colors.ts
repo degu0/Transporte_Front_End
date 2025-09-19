@@ -7,7 +7,7 @@ const CustomLightTheme = {
   ...PaperLightTheme,
   colors: {
     ...PaperLightTheme.colors,
-    primary: "#1D4F29",
+    primary: "#18996F",
     secondary: "#2E7D32",
     tertiary: "#A5D6A7",
     background: "#F5F5F5",
