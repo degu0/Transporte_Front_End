@@ -22,7 +22,7 @@ export const HeaderMenu = () => {
       <Menu
         visible={visible}
         onDismiss={closeMenu}
-        anchor={<IconButton icon="menu" size={28} onPress={openMenu} />}
+        anchor={<IconButton icon="menu" size={28} onPress={openMenu} style={{color: "#000"}} />}
       >
         <Menu.Item
           onPress={() => {

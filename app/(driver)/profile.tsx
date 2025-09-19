@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "react-native-paper";
 import { HeaderMenu } from "@/components/HeaderMenu";
@@ -13,7 +13,9 @@ export default function Profile() {
       <HeaderMenu />
 
       <View style={styles.header}>
-        <Ionicons name="person-circle-outline" size={80} color={colors.primary} />
+        <View style={styles.icon_header}>
+          <Image source={require("../../assets/images/user.png")}/>
+        </View>
         <Text style={[styles.title, { color: colors.primary }]}>Perfil do Usuário</Text>
       </View>
 
@@ -57,6 +59,11 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     marginBottom: 30,
+  },
+  icon_header:{
+    width: "auto",
+    backgroundColor: "#18996F",
+    borderRadius: 50
   },
   title: {
     marginTop: 10,
