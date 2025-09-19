@@ -17,7 +17,7 @@ export const Button = ({ text, onPress }: ButtonProps) => {
 
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: colors.secondary }]}
+      style={[styles.button, { backgroundColor: colors.primary }]}
       onPress={onPress}
       activeOpacity={0.7}
     >
@@ -28,7 +28,6 @@ export const Button = ({ text, onPress }: ButtonProps) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#0B573E",
     borderRadius: 100,
     paddingVertical: 20,
     alignItems: "center",

@@ -1,30 +1,67 @@
 import { Menu } from "@/components/Menu";
-import { Button } from "@/components/Button";
-import QrCode from "../../assets/images/qrCode.png";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import { useTheme } from "react-native-paper";
-import { navigate } from "expo-router/build/global-state/routing";
+import { router } from "expo-router";
 
 export default function Home() {
   const { colors } = useTheme();
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
+      {/* Botão de alerta */}
       <TouchableOpacity
-        style={[styles.containerAlert, { backgroundColor: colors.secondary }]}
+        style={styles.containerAlert}
+        onPress={() => console.log("Alerta pressionado")}
+        accessibilityRole="button"
+        accessibilityLabel="Abrir alertas"
+        activeOpacity={0.7}
       >
-        <Feather name="alert-triangle" size={35} color="#fff" />
+        <Feather name="alert-triangle" size={35} color={colors.primary} />
       </TouchableOpacity>
 
+      {/* Conteúdo principal */}
       <View style={styles.content}>
-        <Text style={[styles.title, { color: colors.onSurface }]}>
-          Bem-vindo à Home student!
-        </Text>
-        <Image style={styles.image} source={QrCode} />
+        <View style={styles.container_logo}>
+          <Image
+            style={styles.logo}
+            source={require("../../assets/images/icon-light.png")}
+          />
+          <Text style={[styles.title, { color: colors.primary }]}>CONECTA</Text>
+          <Text style={[styles.title, { color: colors.onSurface }]}>TRANSPORTE</Text>
+        </View>
+
         <View style={styles.buttons}>
-          <Button text="Ler QR Code" onPress={() => navigate('/vacancy')} />
-          <View style={{ height: 12 }} />
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: colors.primary }]}
+            onPress={() => router.push("/scan")}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Ler QR Code"
+          >
+            <Text style={[styles.text, { color: colors.background }]}>
+              Ler o QR Code
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.button,
+              {
+                backgroundColor: colors.surface,
+                borderWidth: 1,
+                borderColor: colors.secondary,
+              },
+            ]}
+            onPress={() => router.push("/generate")}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Gerar QR Code"
+          >
+            <Text style={[styles.text, { color: colors.secondary }]}>
+              Gerar o QR Code
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -49,22 +86,36 @@ const styles = StyleSheet.create({
     top: 20,
     right: 20,
     padding: 15,
-    borderRadius: 50,
     zIndex: 10,
   },
+  container_logo: {
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  logo: {
+    width: 166,
+    height: 107,
+    marginBottom: 15,
+    resizeMode: "contain",
+  },
+  button: {
+    borderRadius: 8,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginTop: 8,
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
   buttons: {
+    gap: 20,
     width: "100%",
     marginTop: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 24,
     textAlign: "center",
-  },
-  image: {
-    width: 160,
-    height: 160,
-    marginBottom: 24,
   },
 });
