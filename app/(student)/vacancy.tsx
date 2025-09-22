@@ -1,7 +1,7 @@
 import { BusPlan } from "@/components/BusPlan";
 import { ModalComponent } from "@/components/Modal";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { useTheme } from "react-native-paper";
 
 export default function Vacancy() {

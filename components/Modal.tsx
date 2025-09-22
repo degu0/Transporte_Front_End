@@ -28,7 +28,7 @@ export const ModalComponent = () => {
       marginTop: 15,
     },
     textStyle: {
-      color: colors.onSurface,
+      color: colors.surface,
       textAlign: "center",
     },
     centeredView: {
@@ -53,11 +53,11 @@ export const ModalComponent = () => {
     },
     informationTextTitle: {
       fontWeight: "bold",
-      color: colors.onSurface,
+      color: colors.surface,
       fontSize: 18,
     },
     informationTextContent: {
-      color: colors.onSurface,
+      color: colors.surface,
       fontSize: 18,
     },
   });

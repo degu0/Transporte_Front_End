@@ -9,7 +9,6 @@ export default function Home() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      {/* Botão de alerta */}
       <TouchableOpacity
         style={styles.containerAlert}
         onPress={() => console.log("Alerta pressionado")}
@@ -20,7 +19,6 @@ export default function Home() {
         <Feather name="alert-triangle" size={35} color={colors.primary} />
       </TouchableOpacity>
 
-      {/* Conteúdo principal */}
       <View style={styles.content}>
         <View style={styles.container_logo}>
           <Image
@@ -53,7 +51,7 @@ export default function Home() {
                 borderColor: colors.secondary,
               },
             ]}
-            onPress={() => router.push("/generate")}
+            onPress={() => router.push("/home")}
             activeOpacity={0.7}
             accessibilityRole="button"
             accessibilityLabel="Gerar QR Code"
