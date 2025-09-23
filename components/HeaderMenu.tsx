@@ -1,5 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
+import { router } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
 import { Menu, IconButton } from "react-native-paper";
@@ -24,6 +25,13 @@ export const HeaderMenu = () => {
         onDismiss={closeMenu}
         anchor={<IconButton icon="menu" size={28} onPress={openMenu} style={{color: "#000"}} />}
       >
+        <Menu.Item
+          onPress={() => {
+            router.push("/settings")
+            closeMenu();
+          }}
+          title="Configuração"
+        />
         <Menu.Item
           onPress={() => {
             toggleTheme();
