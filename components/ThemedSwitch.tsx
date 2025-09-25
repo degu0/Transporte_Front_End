@@ -16,9 +16,9 @@ export function ThemedSwitch({
       onValueChange={onToggle}
       trackColor={{
         false: colors.outlineVariant ?? "#767577",
-        true: colors.primary ?? "#00A86B",
+        true: colors.primary ?? colors.secondary,
       }}
-      thumbColor={colors.surface} // usa a cor do tema
+      thumbColor={colors.onSurface}
       ios_backgroundColor={colors.outlineVariant ?? "#3e3e3e"}
     />
   );

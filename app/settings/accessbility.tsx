@@ -6,7 +6,7 @@ import { router } from "expo-router";
 export default function Account() { 
   const { colors } = useTheme();
   return (
-    <View style={styles.screenContainer}>
+    <View style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <View style={styles.headerContainer}>
         <Ionicons
           name="arrow-back"
@@ -14,7 +14,7 @@ export default function Account() {
           color={colors.onSurface}
           onPress={() => router.back()}
         />
-        <Text style={styles.headerTitle}>Acessibilidade</Text>
+        <Text style={[styles.headerTitle, {color: colors.onSurface}]}>Acessibilidade</Text>
       </View>
 
       <View style={[styles.divider, { backgroundColor: colors.outline }]} />

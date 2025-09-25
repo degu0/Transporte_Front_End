@@ -10,7 +10,7 @@ export default function Account() {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const { colors } = useTheme();
   return (
-    <View style={styles.screenContainer}>
+    <View style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <View style={styles.headerContainer}>
         <Ionicons
           name="arrow-back"
@@ -18,14 +18,14 @@ export default function Account() {
           color={colors.onSurface}
           onPress={() => router.back()}
         />
-        <Text style={styles.headerTitle}>Notificações</Text>
+        <Text style={[styles.headerTitle, {color: colors.onSurface}]}>Notificações</Text>
       </View>
 
       <View style={[styles.divider, { backgroundColor: colors.outline }]} />
       <View style={styles.optionsList}>
         <View style={styles.optionContainer}>
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Sons de notificações</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Sons de notificações</Text>
             <Text style={styles.optionDescription}>
               Reproduzir sons ao receber notificações
             </Text>
@@ -34,7 +34,7 @@ export default function Account() {
         </View>
         <View style={styles.optionContainer}>
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Lembretes</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Lembretes</Text>
             <Text style={styles.optionDescription}>
               Receba lemnbretes de atualizações <br/> que você ainda não viu
             </Text>

@@ -6,7 +6,7 @@ import { router } from "expo-router";
 export default function Help() { 
   const { colors } = useTheme();
   return (
-    <View style={styles.screenContainer}>
+    <View style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <View style={styles.headerContainer}>
         <Ionicons
           name="arrow-back"
@@ -14,7 +14,7 @@ export default function Help() {
           color={colors.onSurface}
           onPress={() => router.back()}
         />
-        <Text style={styles.headerTitle}>Ajuda</Text>
+        <Text style={[styles.headerTitle, {color: colors.onSurface}]}>Ajuda</Text>
       </View>
 
       <View style={[styles.divider, { backgroundColor: colors.outline }]} />
@@ -25,7 +25,7 @@ export default function Help() {
         >
           <Ionicons name="help-circle-outline" size={22} color={colors.onSurface} />
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Central de Ajuda</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Central de Ajuda</Text>
           </View>
         </Pressable>
         <Pressable
@@ -34,7 +34,7 @@ export default function Help() {
         >
           <Ionicons name="document-text-outline" size={22} color={colors.onSurface} />
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Termos e Política de Privacidade</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Termos e Política de Privacidade</Text>
           </View>
         </Pressable>
         <Pressable
@@ -43,7 +43,7 @@ export default function Help() {
         >
           <Ionicons name="alert-circle-outline" size={22} color={colors.onSurface} />
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Dados do app</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Dados do app</Text>
           </View>
         </Pressable>
       </View>

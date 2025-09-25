@@ -9,7 +9,7 @@ export default function Profile() {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <View style={[styles.container, { backgroundColor: colors.surface }]}>
       <HeaderMenu />
 
       <View style={styles.header}>
@@ -67,7 +67,6 @@ function Information({
     <View
       style={[
         styles.informationContainer,
-        { backgroundColor: colors.elevation.level1 },
         style,
       ]}
       accessibilityLabel={`${category}: ${information}`}

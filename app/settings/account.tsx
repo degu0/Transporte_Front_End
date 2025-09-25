@@ -6,7 +6,7 @@ import { router } from "expo-router";
 export default function Account() { 
   const { colors } = useTheme();
   return (
-    <View style={styles.screenContainer}>
+    <View style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <View style={styles.headerContainer}>
         <Ionicons
           name="arrow-back"
@@ -14,7 +14,7 @@ export default function Account() {
           color={colors.onSurface}
           onPress={() => router.back()}
         />
-        <Text style={styles.headerTitle}>Conta</Text>
+        <Text style={[styles.headerTitle, {color: colors.onSurface}]}>Conta</Text>
       </View>
 
       <View style={[styles.divider, { backgroundColor: colors.outline }]} />
@@ -25,7 +25,7 @@ export default function Account() {
         >
           <Ionicons name="person-outline" size={22} color={colors.onSurface} />
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Dados Pessoais</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Dados Pessoais</Text>
           </View>
         </Pressable>
         <Pressable
@@ -34,7 +34,7 @@ export default function Account() {
         >
           <Ionicons name="person-add-outline" size={22} color={colors.onSurface} />
           <View style={styles.optionTextContainer}>
-            <Text style={styles.optionTitle}>Renovação de matrícula</Text>
+            <Text style={[styles.optionTitle, {color: colors.onSurface}]}>Renovação de matrícula</Text>
           </View>
         </Pressable>
       </View>

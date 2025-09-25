@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
+  Animated,
   StyleSheet,
   Text,
   TextInput,
@@ -7,7 +8,6 @@ import {
   View,
 } from "react-native";
 import { useTheme } from "react-native-paper";
-
 
 interface InputProps extends TextInputProps {
   label: string;
@@ -27,8 +27,25 @@ export const Input = ({
   onValueChange,
   ...props
 }: InputProps) => {
+  const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState(initialValue);
   const { colors } = useTheme();
+
+  // Animação da borda
+  const borderAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(borderAnim, {
+      toValue: isFocused ? 1 : 0,
+      duration: 200,
+      useNativeDriver: false,
+    }).start();
+  }, [isFocused]);
+
+  const borderColor = borderAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [colors.onSurface, colors.primary],
+  });
 
   const handleChange = (text: string) => {
     let newValue = text;
@@ -54,28 +71,19 @@ export const Input = ({
   return (
     <View>
       {label && (
-        <Text
-          style={[
-            styles.label,
-            { color: colors.onSurface } 
-          ]}
-        >
-          {label}
-        </Text>
+        <Text style={[styles.label, { color: colors.onSurface }]}>{label}</Text>
       )}
-      <TextInput
-        style={[
-          styles.input,
-          {
-            borderColor: colors.primary,
-            color: colors.onSurface,
-          },
-        ]}
-        placeholderTextColor={colors.onSurface + "99"}
-        value={value}
-        onChangeText={handleChange}
-        {...props}
-      />
+      <Animated.View style={{ borderRadius: 100, borderWidth: 1, borderColor }}>
+        <TextInput
+          style={[styles.input, { color: colors.onSurface }]}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholderTextColor={colors.onSurface + "99"}
+          value={value}
+          onChangeText={handleChange}
+          {...props}
+        />
+      </Animated.View>
     </View>
   );
 };
@@ -87,12 +95,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   input: {
-    borderWidth: 1,
-    borderRadius: 100,
     paddingHorizontal: 20,
     paddingVertical: 12,
     fontSize: 14,
-    marginBottom: 16,
     width: "100%",
   },
 });

@@ -26,7 +26,7 @@ export default function SettingsScreen() {
       >
         <Ionicons name={icon} size={22} color={colors.onSurface} />
         <View style={styles.optionTextContainer}>
-          <Text style={styles.optionTitle}>{title}</Text>
+          <Text style={[styles.optionTitle, {color: colors.onSurface}]}>{title}</Text>
           <Text style={styles.optionDescription}>{description}</Text>
         </View>
       </Pressable>
@@ -34,10 +34,10 @@ export default function SettingsScreen() {
   };
 
   return (
-    <View style={styles.screenContainer}>
+    <View style={[styles.screenContainer, {backgroundColor: colors.background}]}>
       <View style={styles.headerContainer}>
         <Ionicons name="arrow-back" size={22} color={colors.onSurface} onPress={() => router.back()} />
-        <Text style={styles.headerTitle}>Configurações</Text>
+        <Text style={[styles.headerTitle, {color: colors.onSurface}]}>Configurações</Text>
       </View>
 
       <View style={[styles.divider, { backgroundColor: colors.outline }]} />

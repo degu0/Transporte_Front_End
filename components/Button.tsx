@@ -21,7 +21,7 @@ export const Button = ({ text, onPress }: ButtonProps) => {
       onPress={onPress}
       activeOpacity={0.7}
     >
-      <Text style={[styles.text, { color: colors.background }]}>{text}</Text>
+      <Text style={[styles.text, { color: "#ffff" }]}>{text}</Text>
     </TouchableOpacity>
   );
 };
