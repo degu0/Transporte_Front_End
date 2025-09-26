@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useTheme } from "react-native-paper";
 
-export const ModalComponent = () => {
+export const InformationModal = () => {
   const { colors } = useTheme();
   const [modalVisible, setModalVisible] = useState(false);
   const { width } = Dimensions.get("window");
@@ -32,7 +32,7 @@ export const ModalComponent = () => {
       elevation: 2,
     },
     textStyle: {
-      color: colors.surface,
+      color: "#fff",
       textAlign: "center",
       fontWeight: "600",
       fontSize: 16,
@@ -122,7 +122,7 @@ export const ModalComponent = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.closeButtonContainer}>
-              <Text style={styles.modalTitle}>Informações</Text>
+              <Text style={[styles.modalTitle, {color: colors.onSurface}]}>Informações</Text>
               <Pressable
                 style={styles.closeButton}
                 onPress={() => setModalVisible(false)}

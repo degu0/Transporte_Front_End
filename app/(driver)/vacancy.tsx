@@ -1,5 +1,5 @@
 import { BusPlan } from "@/components/BusPlan";
-import { InformationModal } from "@/components/Modal/InformationModal";
+import { ListModal } from "@/components/Modal/ListModal";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
@@ -9,7 +9,7 @@ export default function Vacancy() {
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <BusPlan />
-      <InformationModal />
+      <ListModal />
     </View>
   );
 }
