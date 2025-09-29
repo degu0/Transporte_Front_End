@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "react-native-paper";
 import { HeaderMenu } from "@/components/HeaderMenu";
@@ -9,46 +9,57 @@ export default function Profile() {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.surface }]}>
-      <HeaderMenu />
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1}}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={[styles.container, { backgroundColor: colors.surface }]}>
+          <HeaderMenu />
 
-      <View style={styles.header}>
-        <Ionicons
-          name="person-circle-outline"
-          size={150}
-          color={colors.primary}
-        />
-        <Text style={[styles.title, { color: colors.onSurface }]}>
-          DEYVID GUSTAVO CORREIA DE SOUSA
-        </Text>
-      </View>
+          <View style={styles.header}>
+            <Ionicons
+              name="person-circle-outline"
+              size={150}
+              color={colors.primary}
+            />
+            <Text style={[styles.title, { color: colors.onSurface }]}>
+              DEYVID GUSTAVO CORREIA DE SOUSA
+            </Text>
+          </View>
 
-      <View style={styles.infoWrapper}>
-        <Information category="CPF" information="123.456.678-90" />
-        <Information category="Telefone" information="4002-8922" />
-        <Information
-          category="Instituição de Ensino"
-          information="Unifavip Wyden"
-        />
+          <View style={styles.infoWrapper}>
+            <Information category="CPF" information="123.456.678-90" />
+            <Information category="Telefone" information="4002-8922" />
+            <Information
+              category="Instituição de Ensino"
+              information="Unifavip Wyden"
+            />
 
-        <View style={styles.row}>
-          <Information
-            category="Período"
-            information="3º Período"
-            style={{ flex: 1 }}
-          />
-          <Information
-            category="Turno"
-            information="Noite"
-            style={{ flex: 1 }}
-          />
+            <View style={styles.row}>
+              <Information
+                category="Período"
+                information="3º Período"
+                style={{ flex: 1 }}
+              />
+              <Information
+                category="Turno"
+                information="Noite"
+                style={{ flex: 1 }}
+              />
+            </View>
+
+            <Information
+              category="Dias da semana"
+              information="Segunda à Sexta"
+            />
+          </View>
+
+          <Menu />
         </View>
-
-        <Information category="Dias da semana" information="Segunda à Sexta" />
-      </View>
-
-      <Menu />
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -65,10 +76,7 @@ function Information({
 
   return (
     <View
-      style={[
-        styles.informationContainer,
-        style,
-      ]}
+      style={[styles.informationContainer, style]}
       accessibilityLabel={`${category}: ${information}`}
     >
       <Text style={[styles.category, { color: colors.primary }]}>
@@ -89,8 +97,6 @@ function Information({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    justifyContent: "space-between",
   },
   header: {
     alignItems: "center",

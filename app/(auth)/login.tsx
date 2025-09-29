@@ -74,7 +74,7 @@ export default function Login() {
 
           <TouchableOpacity activeOpacity={0.7}>
             <Text style={[styles.link, { color: colors.primary }]}>
-              <span style={{ color: colors.onSurface }}>Esqueceu a senha?</span> Clique aqui
+              <Text style={{ color: colors.onSurface }}>Esqueceu a senha?</Text> Clique aqui
             </Text>
           </TouchableOpacity>
 

@@ -12,14 +12,16 @@ import { useColorScheme } from "react-native";
 type ThemeContextData = {
   isDark: boolean;
   toggleTheme: () => void;
+  theme: typeof MD3LightTheme;
 };
 
 const ThemeContext = createContext<ThemeContextData | undefined>(undefined);
 
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
-  if (!context)
+  if (!context) {
     throw new Error("useThemeContext must be used within ThemeProvider");
+  }
   return context;
 };
 
@@ -71,7 +73,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark, toggleTheme, theme }}>
       <PaperProvider theme={theme}>{children}</PaperProvider>
     </ThemeContext.Provider>
   );
