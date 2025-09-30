@@ -12,12 +12,14 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
 import { useTheme } from "react-native-paper";
+import { useLocalSearchParams } from "expo-router";
 
 export default function Chat() {
   const { colors } = useTheme();
+  const { id } = useLocalSearchParams<{ id: string }>();
 
   const [messages, setMessages] = useState([
-    { id: "1", text: "Olá, test", sender: "bot", person: "Gustavo" },
+    { id: "1", text: `Ola, sou ${id} id`, sender: "bot", person: "Gustavo" },
   ]);
   const [input, setInput] = useState("");
 
@@ -77,13 +79,13 @@ export default function Chat() {
           value={input}
           onChangeText={setInput}
           placeholder="Digite sua mensagem..."
-          placeholderTextColor={colors.onSurface + "99"} // cor mais clara para placeholder
+          placeholderTextColor={colors.onSurface + "99"}
           style={[
             styles.input,
             {
               borderColor: colors.secondary,
               color: colors.onSurface,
-              backgroundColor: colors.tertiary + "22", // leve transparência
+              backgroundColor: colors.tertiary + "22",
             },
           ]}
         />

@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, View, Text, Image } from "react-native";
 import { router, usePathname } from "expo-router";
 import { useTheme } from "react-native-paper";
+import { useAuth } from "@/contexts/AuthContext";
 
 const icons = {
   home: require("../assets/images/home.png"),
@@ -10,27 +11,33 @@ const icons = {
 };
 
 const navItems = [
-  { label: "Alerta", icon: "alert", path: "/alert" },
-  { label: "Home", icon: "home", path: "/home" },
-  { label: "Chat", icon: "chat", path: "/chat" },
-  { label: "Perfil", icon: "user", path: "/profile" },
+  { label: "Alerta", icon: "alert", path: "/alert", group: "bouth" },
+  { label: "Home", icon: "home", path: "/home", group: "bouth" },
+  { label: "Chat", icon: "chat", path: "/chats", group: "driver" },
+  { label: "Perfil", icon: "user", path: "/profile", group: "bouth" },
 ];
 
 export const Menu = () => {
   const { colors } = useTheme();
   const pathname = usePathname();
+  const typeUser = useAuth();
 
   return (
     <View style={[styles.navBar, { backgroundColor: colors.surface }]}>
-      {navItems.map((item) => (
-        <NavItem
-          key={item.label}
-          label={item.label}
-          icon={item.icon}
-          onPress={() => router.push(item.path)}
-          isActive={pathname.startsWith(item.path)}
-        />
-      ))}
+      {navItems.map((item) => {
+        if (item.group === "bouth" || item.group === typeUser.user?.type) {
+          return (
+            <NavItem
+              key={item.label}
+              label={item.label}
+              icon={item.icon}
+              onPress={() => router.push(item.path)}
+              isActive={pathname.startsWith(item.path)}
+            />
+          );
+        }
+        return null;
+      })}
     </View>
   );
 };
