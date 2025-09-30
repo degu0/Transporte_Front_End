@@ -27,7 +27,7 @@ export default function Login() {
   const handleLogin = async () => {
     setErro("");
     try {
-      const type = cpf === "12" && password === "123" ? "student" : "driver";
+      const type = cpf === "12" && password === "123" ? "driver" : "student";
       await login({ cpf, type });
     } catch (error) {
       console.log("Erro no login:", error);

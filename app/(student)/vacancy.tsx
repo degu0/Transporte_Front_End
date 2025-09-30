@@ -1,5 +1,5 @@
 import { BusPlan } from "@/components/BusPlan";
-import { ListModal } from "@/components/Modal/ListModal";
+import { InformationModal } from "@/components/Modal/InformationModal";
 import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
@@ -16,7 +16,7 @@ export default function Vacancy() {
           style={[styles.container, { backgroundColor: colors.background }]}
         >
           <BusPlan />
-          <ListModal />
+          <InformationModal />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -28,6 +28,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
-    paddingBottom: 100
   },
 });

@@ -17,6 +17,6 @@ export default function ProtectedLayout() {
     return <Redirect href="/login" />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return <Stack screenOptions={{animation: "none", headerShown: false }} />;
 
 }
