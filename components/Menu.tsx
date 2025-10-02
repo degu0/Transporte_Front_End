@@ -13,9 +13,11 @@ const icons = {
 const navItems = [
   { label: "Alerta", icon: "alert", path: "/alert", group: "student" },
   { label: "Chat", icon: "chat", path: "/chats", group: "driver" },
-  { label: "Home", icon: "home", path: "/home", group: "bouth" },
+  { label: "Home", icon: "home", path: "/student-home", group: "student" },
+  { label: "Home", icon: "home", path: "/driver-home", group: "driver" },
   { label: "Perfil", icon: "user", path: "/profile", group: "bouth" },
 ];
+
 
 export const Menu = () => {
   const { colors } = useTheme();

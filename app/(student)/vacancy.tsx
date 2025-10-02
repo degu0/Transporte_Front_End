@@ -1,11 +1,14 @@
 import { BusPlan } from "@/components/BusPlan";
+import { Button } from "@/components/Button";
 import { InformationModal } from "@/components/Modal/InformationModal";
+import { useHome } from "@/contexts/HomeContext";
 import React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
 
 export default function Vacancy() {
   const { colors } = useTheme();
+  const { goTo } = useHome();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
@@ -17,6 +20,7 @@ export default function Vacancy() {
         >
           <BusPlan />
           <InformationModal />
+          <Button text="Saida" onPress={() => goTo("routeTracker")} />
         </View>
       </ScrollView>
     </SafeAreaView>

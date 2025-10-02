@@ -1,8 +1,9 @@
 import { Menu } from "@/components/Menu";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useHome } from "@/contexts/HomeContext";
 import Feather from "@expo/vector-icons/Feather";
-import { useTheme } from "react-native-paper";
 import { router } from "expo-router";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useTheme } from "react-native-paper";
 
 export default function Home() {
   const { colors } = useTheme();
@@ -23,10 +24,12 @@ export default function Home() {
         <View style={styles.container_logo}>
           <Image
             style={styles.logo}
-            source={require("../../assets/images/icon-light.png")}
+            source={require("../../../assets/images/icon-light.png")}
           />
           <Text style={[styles.title, { color: colors.primary }]}>CONECTA</Text>
-          <Text style={[styles.title, { color: colors.onSurface }]}>TRANSPORTE</Text>
+          <Text style={[styles.title, { color: colors.onSurface }]}>
+            TRANSPORTE
+          </Text>
         </View>
 
         <View style={styles.buttons}>

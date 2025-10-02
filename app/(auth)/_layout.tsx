@@ -15,7 +15,7 @@ export default function PublicLayout() {
 
   if (user) {
     if (user.type === "student") {
-      return <Redirect href="/(student)/home" />;
+      return <Redirect href="/(student)/(home)/home" />;
     }
     if (user.type === "driver") {
       return <Redirect href="/(driver)/home" />;
