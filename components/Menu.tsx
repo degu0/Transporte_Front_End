@@ -6,14 +6,14 @@ import { useAuth } from "@/contexts/AuthContext";
 const icons = {
   home: require("../assets/images/home.png"),
   alert: require("../assets/images/alert.png"),
-  chat: require("../assets/images/chat.png"),
+  chat: require("../assets/images/chat.svg"),
   user: require("../assets/images/user.png"),
 };
 
 const navItems = [
-  { label: "Alerta", icon: "alert", path: "/alert", group: "bouth" },
-  { label: "Home", icon: "home", path: "/home", group: "bouth" },
+  { label: "Alerta", icon: "alert", path: "/alert", group: "student" },
   { label: "Chat", icon: "chat", path: "/chats", group: "driver" },
+  { label: "Home", icon: "home", path: "/home", group: "bouth" },
   { label: "Perfil", icon: "user", path: "/profile", group: "bouth" },
 ];
 
