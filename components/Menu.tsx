@@ -19,6 +19,11 @@ const navItems = [
   { label: "Perfil", icon: "user", path: "/profile", group: "bouth" },
 ];
 
+const activePathsMap: Record<string, string[]> = {
+  home: ["/student-home", "/routeTracker", "/passengerChecklist"],
+  driver: ["/driver-home"],
+};
+
 export const Menu = () => {
   const { colors } = useTheme();
   const pathname = usePathname();
@@ -34,7 +39,11 @@ export const Menu = () => {
               key={item.label}
               label={item.label}
               icon={item.icon}
-              isActive={pathname.startsWith(item.path)}
+              isActive={
+                item.isHome
+                  ? activePathsMap["home"].some((p) => pathname.startsWith(p))
+                  : pathname.startsWith(item.path)
+              }
               onPress={() => {
                 if (item.isHome) {
                   voltarParaHomeAnterior();
