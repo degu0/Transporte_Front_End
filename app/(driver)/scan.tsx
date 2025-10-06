@@ -1,5 +1,4 @@
 import { Button } from "@/components/Button";
-import { Menu } from "@/components/Menu";
 import { View, Image, StyleSheet } from "react-native";
 import { router } from "expo-router";
 import { useTheme } from "react-native-paper";
@@ -16,7 +15,6 @@ export default function Scan() {
         />
         <Button text="Ler o QrCode" onPress={() => router.push("/vacancy")} />
       </View>
-      <Menu />
     </View>
   );
 }

@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, View, Text, Image } from "react-native";
 import { router, usePathname } from "expo-router";
 import { useTheme } from "react-native-paper";
 import { useAuth } from "@/contexts/AuthContext";
+import { useHome } from "@/contexts/HomeContext";
 
 const icons = {
   home: require("../assets/images/home.png"),
@@ -13,16 +14,16 @@ const icons = {
 const navItems = [
   { label: "Alerta", icon: "alert", path: "/alert", group: "student" },
   { label: "Chat", icon: "chat", path: "/chats", group: "driver" },
-  { label: "Home", icon: "home", path: "/student-home", group: "student" },
-  { label: "Home", icon: "home", path: "/driver-home", group: "driver" },
+  { label: "Home", icon: "home", path: "home", group: "student", isHome: true },
+  { label: "Home", icon: "home", path: "home", group: "driver", isHome: true },
   { label: "Perfil", icon: "user", path: "/profile", group: "bouth" },
 ];
-
 
 export const Menu = () => {
   const { colors } = useTheme();
   const pathname = usePathname();
   const typeUser = useAuth();
+  const { voltarParaHomeAnterior } = useHome();
 
   return (
     <View style={[styles.navBar, { backgroundColor: colors.surface }]}>
@@ -33,8 +34,14 @@ export const Menu = () => {
               key={item.label}
               label={item.label}
               icon={item.icon}
-              onPress={() => router.push(item.path)}
               isActive={pathname.startsWith(item.path)}
+              onPress={() => {
+                if (item.isHome) {
+                  voltarParaHomeAnterior();
+                } else {
+                  router.push(item.path);
+                }
+              }}
             />
           );
         }

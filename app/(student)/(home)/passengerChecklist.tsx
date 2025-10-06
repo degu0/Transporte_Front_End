@@ -1,6 +1,5 @@
 import Accordion from "@/components/Accordion";
 import { Button } from "@/components/Button";
-import { Menu } from "@/components/Menu";
 import { useHome } from "@/contexts/HomeContext";
 import {
   Dimensions,
@@ -17,7 +16,7 @@ import { useTheme } from "react-native-paper";
 const { width } = Dimensions.get("window");
 
 export default function PassengerChecklist() {
-  const { goTo } = useHome();
+  const { avancarFluxo, resetFluxo } = useHome();
   const { colors } = useTheme();
 
   const StudentList = [
@@ -93,12 +92,10 @@ export default function PassengerChecklist() {
         <StudentListAccordion title="Só voltam" color="blue" />
 
         <View style={styles.buttonsContainer}>
-          <Button text="Sair" onPress={() => goTo("routeTracker")} />
-          <Button text="Chegou" onPress={() => goTo("home")} />
+          <Button text="Sair" onPress={resetFluxo} />
+          <Button text="Chegou" onPress={avancarFluxo} />
         </View>
       </ScrollView>
-
-      <Menu />
     </View>
   );
 }

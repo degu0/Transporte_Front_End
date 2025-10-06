@@ -1,5 +1,6 @@
+import { Menu } from "@/components/Menu";
 import { useAuth } from "@/contexts/AuthContext";
-import { Redirect, Stack } from "expo-router";
+import { Redirect, Slot, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
 export default function ProtectedLayout() {
@@ -17,6 +18,12 @@ export default function ProtectedLayout() {
     return <Redirect href="/login" />;
   }
 
-  return <Stack screenOptions={{animation: "none", headerShown: false }} />;
-
+  return (
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
+        <Slot />
+      </View>
+      <Menu />
+    </View>
+  );
 }

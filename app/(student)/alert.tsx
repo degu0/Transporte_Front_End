@@ -1,4 +1,4 @@
-import { Menu } from "@/components/Menu";
+
 import { Text, View, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
@@ -21,8 +21,6 @@ export default function Alert() {
         <Message person="Davi" comment="Péssimo" theme={colors} />
         <Message person="Maria" comment="Falta organização" theme={colors} />
       </View>
-
-      <Menu />
     </View>
   );
 }

@@ -33,9 +33,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(userData);
 
     if(userData.type === "student") {
-      router.replace("/(student)/home");
+      router.replace("/(student)/(home)/student-home");
     }else {
-      router.replace("/(driver)/home");
+      router.replace("/(driver)/driver-home");
     }
   };
 

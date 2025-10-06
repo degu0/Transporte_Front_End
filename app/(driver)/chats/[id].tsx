@@ -1,4 +1,3 @@
-import { Menu } from "@/components/Menu";
 import {
   Text,
   View,
@@ -96,8 +95,6 @@ export default function Chat() {
           <Ionicons name="send-sharp" size={24} color="#fff" />
         </TouchableOpacity>
       </View>
-
-      <Menu />
     </KeyboardAvoidingView>
   );
 }

@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "react-native-paper";
 import { HeaderMenu } from "@/components/HeaderMenu";
-import { Menu } from "@/components/Menu";
 
 export default function Profile() {
   const { colors } = useTheme();
@@ -55,8 +54,6 @@ export default function Profile() {
               information="Segunda à Sexta"
             />
           </View>
-
-          <Menu />
         </View>
       </ScrollView>
     </SafeAreaView>

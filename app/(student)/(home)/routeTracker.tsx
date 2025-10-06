@@ -1,12 +1,11 @@
 import { Button } from "@/components/Button";
-import { Menu } from "@/components/Menu";
 import { useHome } from "@/contexts/HomeContext";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { useTheme } from "react-native-paper";
 
 export default function RouteTracker() {
   const { colors } = useTheme();
-  const { goTo } = useHome();
+  const { avancarFluxo } = useHome();
 
   return (
     <View style={styles.container}>
@@ -32,12 +31,11 @@ export default function RouteTracker() {
             />
             <Button
               text="Chegar"
-              onPress={() => goTo("passengerChecklist")}
+              onPress={avancarFluxo}
             />
           </View>
         </View>
       </ImageBackground>
-      <Menu />
     </View>
   );
 }

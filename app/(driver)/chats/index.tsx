@@ -1,4 +1,3 @@
-import { Menu } from "@/components/Menu";
 import { router } from "expo-router";
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { useTheme } from "react-native-paper";
@@ -23,7 +22,6 @@ export default function Chats() {
           />
         ))}
       </View>
-      <Menu />
     </View>
   );
 }

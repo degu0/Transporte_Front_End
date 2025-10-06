@@ -15,10 +15,10 @@ export default function PublicLayout() {
 
   if (user) {
     if (user.type === "student") {
-      return <Redirect href="/(student)/(home)/home" />;
+      return <Redirect href="/(student)/(home)/student-home" />;
     }
     if (user.type === "driver") {
-      return <Redirect href="/(driver)/home" />;
+      return <Redirect href="/(driver)/driver-home" />;
     }
     logout()
     return <Redirect href="/(auth)/login" />;

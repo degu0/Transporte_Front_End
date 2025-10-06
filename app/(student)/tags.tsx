@@ -1,4 +1,3 @@
-import { Menu } from "@/components/Menu";
 import { router } from "expo-router";
 import {
   View,

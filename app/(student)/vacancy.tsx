@@ -8,7 +8,7 @@ import { useTheme } from "react-native-paper";
 
 export default function Vacancy() {
   const { colors } = useTheme();
-  const { goTo } = useHome();
+  const { avancarFluxo } = useHome();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
@@ -20,7 +20,7 @@ export default function Vacancy() {
         >
           <BusPlan />
           <InformationModal />
-          <Button text="Saida" onPress={() => goTo("routeTracker")} />
+          <Button text="Saida" onPress={avancarFluxo} />
         </View>
       </ScrollView>
     </SafeAreaView>

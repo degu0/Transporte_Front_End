@@ -1,6 +1,4 @@
-import { Menu } from "@/components/Menu";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import Feather from "@expo/vector-icons/Feather";
 import { useTheme } from "react-native-paper";
 import { router } from "expo-router";
 
@@ -9,16 +7,6 @@ export default function Home() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <TouchableOpacity
-        style={styles.containerAlert}
-        onPress={() => console.log("Alerta pressionado")}
-        accessibilityRole="button"
-        accessibilityLabel="Abrir alertas"
-        activeOpacity={0.7}
-      >
-        <Feather name="alert-triangle" size={35} color={colors.primary} />
-      </TouchableOpacity>
-
       <View style={styles.content}>
         <View style={styles.container_logo}>
           <Image
@@ -62,8 +50,6 @@ export default function Home() {
           </TouchableOpacity>
         </View>
       </View>
-
-      <Menu />
     </View>
   );
 }

@@ -1,25 +1,14 @@
-import { Menu } from "@/components/Menu";
 import { useHome } from "@/contexts/HomeContext";
-import Feather from "@expo/vector-icons/Feather";
 import { router } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from "react-native-paper";
 
 export default function Home() {
+  const {avancarFluxo} = useHome();
   const { colors } = useTheme();
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <TouchableOpacity
-        style={styles.containerAlert}
-        onPress={() => console.log("Alerta pressionado")}
-        accessibilityRole="button"
-        accessibilityLabel="Abrir alertas"
-        activeOpacity={0.7}
-      >
-        <Feather name="alert-triangle" size={35} color={colors.primary} />
-      </TouchableOpacity>
-
       <View style={styles.content}>
         <View style={styles.container_logo}>
           <Image
@@ -35,7 +24,7 @@ export default function Home() {
         <View style={styles.buttons}>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: colors.primary }]}
-            onPress={() => router.push("/scan")}
+            onPress={avancarFluxo}
             activeOpacity={0.7}
             accessibilityRole="button"
             accessibilityLabel="Ler QR Code"
@@ -65,8 +54,6 @@ export default function Home() {
           </TouchableOpacity>
         </View>
       </View>
-
-      <Menu />
     </View>
   );
 }
